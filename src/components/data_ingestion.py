@@ -16,10 +16,12 @@ setup_logging()
 
 @dataclass
 class DataIngestionConfig:
+    project_root: str = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
     train_data_path: str = os.path.join('artifacts', 'train.csv')
     test_data_path: str = os.path.join('artifacts', 'test.csv')
     raw_data_path: str = os.path.join('artifacts', 'data.csv')
-    
+    input_data_path: str = os.path.join(project_root, 'notebook', 'data', 'stud.csv')
+
 class DataIngestion:
     def __init__(self):
         self.ingestion_config = DataIngestionConfig()
@@ -27,7 +29,7 @@ class DataIngestion:
     def initiate_data_ingestion(self):
         logging.info("Entered the data ingestion method or component")
         try:
-            df = pd.read_csv('C:\\Users\\msozg\\Desktop\\ML Projects\\mlops-project.v2.0\\notebook\\data\\stud.csv')
+            df = pd.read_csv(self.ingestion_config.input_data_path)
             logging.info("Read the dataset as dataframe")
 
             os.makedirs(os.path.dirname(self.ingestion_config.train_data_path), exist_ok = True)
