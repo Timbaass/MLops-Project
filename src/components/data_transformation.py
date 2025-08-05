@@ -13,7 +13,6 @@ from src.exception import CustomException
 from src.logger import setup_logging, logging
 
 from dataclasses import dataclass
-from typing import List
 
 from src.utils import save_object
 
@@ -21,7 +20,7 @@ setup_logging()
 
 @dataclass
 class DataTransformationConfig:
-    preproccesor_obj_file_path: str = os.path.join("articles", "preprocessor.pkl")
+    preproccesor_obj_file_path: str = os.path.join("artifacts", "preprocessor.pkl")
 
 class DataTransformation:
     def __init__(self):
@@ -102,8 +101,7 @@ class DataTransformation:
 
             return (
                 train_arr,
-                test_arr,
-                self.data_transformation_config.preproccesor_obj_file_path
+                test_arr
             )
                  
         except Exception as e:
