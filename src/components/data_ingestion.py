@@ -60,5 +60,5 @@ if __name__ == "__main__":
     data_transformation = DataTransformation()
     train_arr, test_arr = data_transformation.initiate_data_tranformation(train_data, test_data)
     model_trainer = ModelTrainer()
-    model_trainer.initiate_model_trainer(train_arr, test_arr)
+    print(model_trainer.initiate_model_trainer(train_arr, test_arr))
     print("Data ingestion completed successfully.")
